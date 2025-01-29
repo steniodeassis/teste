@@ -26,7 +26,7 @@ A better way to create such numbers from a recursive approach is by defining a s
 
 
 ### Experimental Analysis
-I designed experiments to determine the average run time and number of steps that both implementations take for increasing values of $n$ [here](/strobogrammatic-generator/experimental-analyis.py).
+I designed experiments to determine the average run time and number of steps that both implementations take for increasing values of $n$ [here](/strobogrammatic-generator/experimental-analysis.py).
 
 Iterative step counter:
 N: 5 | steps:  464
