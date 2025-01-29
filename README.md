@@ -21,4 +21,6 @@ If the length of a strobogrammatic number is 1, there are only three possible po
 A better way to create such numbers from a recursive approach is by defining a sub-function that can be called for when the input size is bigger than 1. This function should define the extremities of the numbers to be either (1-1, 8-8, 6-9, or 9-6). These extremes would be disregarded for the recursion input, and then the subfunction would be called to return for the inner values for the new extremities. However, the values would now consider the equidistant pair 0-0. Therefore, its values would assume the (0-0, 1-1, 8-8, 6-9, 9-6) pairs. The code ends when the function reaches the base case: the center values, which can be either (0, 1, 8) if the input size is odd, or (00, 11, 88, 69, 96) when it is even.
 
 ### Flowchart
-![pdf](https://minerva-sle-collaboration-production.s3.us-west-2.amazonaws.com/workbook-upload/cl84j80ko0000356hkxboq50d)
+![strobogrammatic() (1)](https://github.com/user-attachments/assets/d91b051b-54c7-41c9-bfdf-ee3d25b8eb33)
+![strobogrammatic() (2)](https://github.com/user-attachments/assets/245a2443-aadd-4920-bf51-52462641de97)
+
