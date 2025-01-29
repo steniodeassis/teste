@@ -24,3 +24,37 @@ A better way to create such numbers from a recursive approach is by defining a s
 ![strobogrammatic() (1)](https://github.com/user-attachments/assets/d91b051b-54c7-41c9-bfdf-ee3d25b8eb33)
 ![strobogrammatic() (2)](https://github.com/user-attachments/assets/245a2443-aadd-4920-bf51-52462641de97)
 
+
+### Experimental Analysis
+I designed experiments to determine the average run time and number of steps that both implementations take for increasing values of $n$ [here](/strobogrammatic-generator/experimental-analyis.py).
+
+Iterative step counter:
+	N: 5 | steps:  464
+Iterative step counter:
+	N: 10 | steps:  117528
+Iteratve step counter:
+	N: 15 | steps:  4812524
+
+Recursive step counter:
+	N: 5 | steps:  137
+Recursive step counter:
+	N: 10 | steps:  5017
+Recursive step counter:
+	N: 15 | steps:  375017
+
+From the two plots below, there is a divergence of efficiency between the number of steps and the running time for both algorithms. The iterative function increases its number of steps more than the recursive function for increased input values. This is surprising, given the recursive approach was supposed to call for more steps as the function grows. This might be caused by the itertools.product() function that is called inside the iterative approach. For more values between the left-extreme digit and median, the number of combinations also increases. 
+
+![image](https://github.com/user-attachments/assets/100eb8f0-042b-44ff-b068-47a21b234582)
+![image](https://github.com/user-attachments/assets/8271eb00-6528-4e55-a4b0-37959d29acf2)
+
+However, on another side, the runtime analysis is different. It is seen that the recursive takes more time to run as the input increase than the iterative. This again makes sense when thinking about the difference in running time between an inbuilt function itertools.product() (for the iterative) and the created function more than once (for the recursive). 
+
+As pointed out by Cormen et al. (2009), an algorithm running time is defined by its number of steps (still, the number of steps should have more appropriate assumptions than those made for this assignment). Therefore when comparing the two analyses, the inference that aligns more with this definition is the best implementation (or more efficient algorithm) is the recursive algorithm. The main reason is the number of steps the itertools.product() takes. The iterative algorithm number of steps becomes increasingly higher than the recursive approach for the same input.
+
+Since this analysis only considers values below 20 (the code takes too much time for values above 15), it might be necessary to look up the functions for more significant values. However, given the above explanation, the graphic might behave as predicted. 
+
+
+
+## References
+Cormen, T., Leiserson, C., Rivest, R., & Stein, C. (2009). Introduction to Algorithms (Third). Cambridge, Mass.: Mit Press.
+
