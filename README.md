@@ -1,12 +1,8 @@
-# Data Structures and Algorithms
-
-Codes from assignments of Data Structures and Algorithms class.
-
-## Strobogrammatic Number Generator
+# Strobogrammatic Number Generator and Experimental Analysis
 A strobogrammatic number is a number that looks the same when rotated upside down, such as 8, 101, 96. Here we consider 1 to be strobogrammatic.
 I developed two codes using a **iterative** and **recursive** approach that takes an integer _n_ as input and returns all the strobogrammatic numbers of length _n_ in a list.
 
-### Iterative Approach
+## Iterative Approach
 
 In the iterative approach, if the number of digits is 1, the strobogrammatic number can be either 0, 1, or 8. 
 
@@ -14,32 +10,34 @@ For digits greater than 2, we first define the extreme values as 1-1, 8-8, 6-9, 
 
 If the digit number is odd, a center value will be added for each combination generated. This value would assume either 0, 1, or 8. If the digit number is even, such a center value would not exist, and the code would be done, outputting all numbers.
 
-### Recursive Approach
+## Recursive Approach
 
 If the length of a strobogrammatic number is 1, there are only three possible possibilities. The number can be 0, 1, or 8. However, when the number of digits is greater than 1, the number can be composed of 6 and 9 (and vice-versa) when they are equidistant concerning the median digit.
 
 A better way to create such numbers from a recursive approach is by defining a sub-function that can be called for when the input size is bigger than 1. This function should define the extremities of the numbers to be either (1-1, 8-8, 6-9, or 9-6). These extremes would be disregarded for the recursion input, and then the subfunction would be called to return for the inner values for the new extremities. However, the values would now consider the equidistant pair 0-0. Therefore, its values would assume the (0-0, 1-1, 8-8, 6-9, 9-6) pairs. The code ends when the function reaches the base case: the center values, which can be either (0, 1, 8) if the input size is odd, or (00, 11, 88, 69, 96) when it is even.
 
-### Flowchart
+## Flowchart
 ![strobogrammatic() (1)](https://github.com/user-attachments/assets/d91b051b-54c7-41c9-bfdf-ee3d25b8eb33)
 ![strobogrammatic() (2)](https://github.com/user-attachments/assets/245a2443-aadd-4920-bf51-52462641de97)
 
 
-### Experimental Analysis
+## Experimental Analysis
 I designed experiments to determine the average run time and number of steps that both implementations take for increasing values of $n$ [here](/strobogrammatic-generator/experimental-analysis.py).
 
-Iterative step counter:
+**Iterative step counter:**
+
 N: 5 | steps:  464
-Iterative step counter:
+
 N: 10 | steps:  117528
-Iteratve step counter:
+
 N: 15 | steps:  4812524
 
-Recursive step counter:
+**Recursive step counter:**
+
 N: 5 | steps:  137
-Recursive step counter:
+
 N: 10 | steps:  5017
-Recursive step counter:
+
 N: 15 | steps:  375017
 
 From the two plots below, there is a divergence of efficiency between the number of steps and the running time for both algorithms. The iterative function increases its number of steps more than the recursive function for increased input values. This is surprising, given the recursive approach was supposed to call for more steps as the function grows. This might be caused by the itertools.product() function that is called inside the iterative approach. For more values between the left-extreme digit and median, the number of combinations also increases. 
@@ -52,7 +50,7 @@ However, on the other hand, the runtime analysis is different. It is seen that t
 
 As pointed out by Cormen et al. (2009), an algorithm running time is defined by its number of steps (still, the number of steps should have more appropriate assumptions than those made for this assignment). Therefore when comparing the two analyses, the inference that aligns more with this definition is the best implementation (or more efficient algorithm) is the recursive algorithm. The main reason is the number of steps the itertools.product() takes. The iterative algorithm number of steps becomes increasingly higher than the recursive approach for the same input.
 
-Since this analysis only considers values below 20 (the code takes too much time for values above 15), it might be necessary to look up the functions for more significant values. However, given the above explanation, the graphic might behave as predicted. 
+Since this analysis only considers values below 20 (the code takes too much time for values above 15), it might be necessary to look up the functions for more significant values. However, given the above explanation, the algorithms might behave as predicted. 
 
 
 
